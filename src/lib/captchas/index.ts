@@ -12,7 +12,7 @@ export enum CaptchaType {
 
 export const captchaQueue = [
     //{ id: CaptchaType.EXAMPLE, component: Example },
-    { id: CaptchaType.CHICK, component: CHICK },
     { id: CaptchaType.OCEAN, component: Ocean },
     { id: CaptchaType.MINECRAFT, component: Minecraft },
+    { id: CaptchaType.CHICK, component: CHICK },
 ];
