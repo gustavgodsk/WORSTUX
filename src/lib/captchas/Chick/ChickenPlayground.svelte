@@ -19,6 +19,6 @@
     {#if currentPhase === 'calibration'}
         <Phase1 onComplete={handleCalibrationComplete} setTitle={orchestrator.setTitle} />
     {:else if currentPhase === 'tracking'}
-        <Phase2 setTitle={orchestrator.setTitle} />
+        <Phase2 setTitle={orchestrator.setTitle} {orchestrator} />
     {/if}
 </div>

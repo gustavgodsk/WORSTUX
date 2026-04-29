@@ -148,6 +148,7 @@
 </script>
 
 <div class="relative h-screen w-screen overflow-hidden bg-gray-100">
+    <h1 class="fixed top-[40%] left-1/2">Hatch the eggs to complete the captcha</h1>
     {#each dots as dot, index (dot.id)}
         <div
             class="absolute z-20 flex h-[100px] w-[100px] -translate-x-1/2 -translate-y-1/2 items-center justify-center transition-all duration-200"

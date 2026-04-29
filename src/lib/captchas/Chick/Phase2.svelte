@@ -5,9 +5,11 @@
     import { Fox } from '../../../../chicken/Fox.js';
     import { Feather } from '../../../../chicken/Feather.js';
 
-    let { setTitle } = $props();
+    let { setTitle, orchestrator } = $props();
     let gazeX = $state(0);
     let gazeY = $state(0);
+
+    let time = $state(30);
 
     // Base Game Canvas (Fox, Chickens, Background)
     let canvas: HTMLCanvasElement | null = null;
@@ -188,6 +190,12 @@
 
     // ---------------- INIT ----------------
     onMount(() => {
+        setInterval(() => {
+            time--;
+            if (time < 1) {
+                orchestrator.handleSuccess();
+            }
+        }, 1000);
         setTitle(TITLE);
 
         if (!canvas) return;
@@ -291,10 +299,9 @@
 
 <div class="pointer-events-none fixed inset-0 z-[100000] flex justify-center pt-6">
     <h1
-        class="text-4xl font-black tracking-wider text-white drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)]"
-        style="-webkit-text-stroke: 1.5px black;"
+        class="absolute top-0 right-0 p-4 text-xl font-black tracking-wider text-white drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)]"
     >
-        {TITLE}
+        {TITLE} ({time})
     </h1>
 </div>
 
