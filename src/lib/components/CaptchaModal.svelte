@@ -42,7 +42,7 @@
     class="fixed inset-0 z-50 flex h-screen w-screen items-center justify-center bg-black/60 p-4 backdrop-blur-sm"
 >
     <div
-        class="relative flex min-h-160 min-w-200 flex-col overflow-hidden rounded-[3px] bg-white shadow-2xl"
+        class="relative flex h-160 max-h-screen w-200 max-w-screen flex-col overflow-hidden rounded-[3px] bg-white shadow-2xl"
     >
         <TimeoutOverlay {orchestrator} />
 
