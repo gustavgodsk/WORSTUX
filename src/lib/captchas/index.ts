@@ -11,8 +11,8 @@ export enum CaptchaType {
 }
 
 export const captchaQueue = [
-    { id: CaptchaType.CHICK, component: CHICK },
-    { id: CaptchaType.EXAMPLE, component: Example },
+    //{ id: CaptchaType.EXAMPLE, component: Example },
     { id: CaptchaType.OCEAN, component: Ocean },
-    { id: CaptchaType.MINECRAFT, component: Minecraft }
+    { id: CaptchaType.MINECRAFT, component: Minecraft },
+    { id: CaptchaType.CHICK, component: CHICK },
 ];

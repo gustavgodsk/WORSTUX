@@ -17,7 +17,7 @@
     let laserCanvas: HTMLCanvasElement | null = null;
     let laserCtx: CanvasRenderingContext2D | null = null;
 
-    const TITLE = 'Protect the chickens';
+    const TITLE = 'Protect the chickens to complete the captcha';
 
     // State to hold the dynamic eye coordinates
     let currentEyes = [
@@ -132,6 +132,11 @@
     // ---------------- LOOP ----------------
     function animate(time: number) {
         if (!ctx || !canvas || !laserCtx || !laserCanvas) return;
+
+        // 🔥 THE FIX: Prevent huge deltaTime on the very first frame
+        if (lastTime === 0) {
+            lastTime = time;
+        }
 
         const deltaTime = (time - lastTime) / 1000;
         lastTime = time;
