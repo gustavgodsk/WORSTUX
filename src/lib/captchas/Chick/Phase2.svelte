@@ -10,6 +10,7 @@
     let gazeY = $state(0);
 
     let time = $state(30);
+    let chickensKilled = $state(0);
 
     // Base Game Canvas (Fox, Chickens, Background)
     let canvas: HTMLCanvasElement | null = null;
@@ -167,6 +168,7 @@
             // 🔥 laser kills chickens
             if (!c.isDead && laserHitsChicken(c)) {
                 stateManager.explodeChicken(c);
+                chickensKilled++;
             }
 
             c.draw(ctx);
@@ -298,11 +300,13 @@
 </script>
 
 <div class="pointer-events-none fixed inset-0 z-[100000] flex justify-center pt-6">
-    <h1
-        class="absolute top-0 right-0 p-4 text-xl font-black tracking-wider text-white drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)]"
+    <div
+        class="absolute top-0 right-0 flex flex-col justify-center p-4 text-end text-xl font-black tracking-wider text-white drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)]"
     >
-        {TITLE} ({time})
-    </h1>
+        <h1>{TITLE} ({time})</h1>
+        <p>Chickens killed: {chickensKilled}</p>
+        <p>Chickens saved: 0</p>
+    </div>
 </div>
 
 <canvas bind:this={canvas} class="fixed inset-0 z-0 bg-[#87c95a]"></canvas>
