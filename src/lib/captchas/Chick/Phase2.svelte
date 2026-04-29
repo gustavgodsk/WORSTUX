@@ -1,9 +1,9 @@
 <script lang="ts">
     import { onMount } from 'svelte';
 
-    import { Chicken } from '../../../../chicken/Chicken.js';
-    import { Fox } from '../../../../chicken/Fox.js';
-    import { Feather } from '../../../../chicken/Feather.js';
+    import { Fox } from './Fox.js';
+    import { Feather } from './Feather.js';
+    import { Chicken } from './Chicken.js';
 
     let { setTitle, orchestrator } = $props();
     let gazeX = $state(0);

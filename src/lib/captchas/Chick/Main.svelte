@@ -3,6 +3,4 @@
     import type { CaptchaProps } from '../types';
 </script>
 
-<div>
-    <p>chick ca</p>
-</div>
+<div></div>
