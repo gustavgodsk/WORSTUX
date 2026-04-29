@@ -1,5 +1,5 @@
 @import 'tailwindcss';
 
 #webgazerVideoContainer {
-    z-index: 9998;
+    z-index: 200;
 }
