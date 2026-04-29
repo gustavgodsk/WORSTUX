@@ -37,6 +37,7 @@
 	},
 	"dependencies": {
 		"@chenglou/pretext": "^0.0.6",
-		"crypto": "^1.0.1"
+		"crypto": "^1.0.1",
+		"webgazer": "^3.5.3"
 	}
 }
