@@ -43,18 +43,24 @@
         explosionTimeouts = [];
         explosionBursts = [];
 
-    const totalDuration = 5_000;
-    const burstsPerGroup = 1;
-    const groupInterval = 60;
-    const withinGroupDelay = 0;
+        const totalDuration = 5_000;
+        const burstsPerGroup = 1;
+        const groupInterval = 60;
+        const withinGroupDelay = 0;
         const groups = Math.ceil(totalDuration / groupInterval);
         let burstIndex = 0;
 
         for (let group = 0; group < groups; group += 1) {
             for (let burst = 0; burst < burstsPerGroup; burst += 1) {
-                const timeoutId = setTimeout(() => {
-                    explosionBursts = [...explosionBursts, createBurst(Date.now() + burstIndex)];
-                }, group * groupInterval + burst * withinGroupDelay);
+                const timeoutId = setTimeout(
+                    () => {
+                        explosionBursts = [
+                            ...explosionBursts,
+                            createBurst(Date.now() + burstIndex)
+                        ];
+                    },
+                    group * groupInterval + burst * withinGroupDelay
+                );
                 explosionTimeouts = [...explosionTimeouts, timeoutId];
                 burstIndex += 1;
             }
@@ -67,7 +73,7 @@
     };
 </script>
 
-<div class="flex min-h-screen items-center justify-center bg-gray-100 p-4">
+<div class="flex min-h-screen flex-col items-center justify-center bg-gray-100 p-4">
     <main class="w-full max-w-md rounded-xl border border-gray-200 bg-white p-8 shadow-2xl">
         <h1 class="mb-6 text-3xl font-black tracking-tight text-gray-800">Login Page</h1>
 
@@ -106,13 +112,9 @@
                 />
                 {#if loginAttempted}
                     {#if attemptedPassword === realPassword}
-                        <p class="mt-2 text-sm font-semibold text-red-600">
-                            Wrong username.
-                        </p>
+                        <p class="mt-2 text-sm font-semibold text-red-600">Wrong username.</p>
                     {:else}
-                        <p class="mt-2 text-sm font-semibold text-red-600">
-                            Wrong password.
-                        </p>
+                        <p class="mt-2 text-sm font-semibold text-red-600">Wrong password.</p>
                         <p class="mt-2 text-sm font-semibold text-red-600">
                             Correct password for clubpenguinguy642 is: {realPassword}
                         </p>
@@ -131,14 +133,22 @@
             </button>
         </form>
     </main>
+    <div class="mt-10">
+        <span>
+            Link to
+            <a target="_blank" href="https://github.com/gustavgodsk/WORSTUX" class="underline"
+                >public repository</a
+            >
+        </span>
+    </div>
 </div>
 
-<div class="fixed inset-0 pointer-events-none z-50" aria-hidden="true">
+<div class="pointer-events-none fixed inset-0 z-50" aria-hidden="true">
     {#each explosionBursts as burst (burst.id)}
         <img
             src={explodeGif}
             alt=""
-            class="absolute left-1/2 top-1/2 w-48 -translate-x-1/2 -translate-y-1/2 drop-shadow-[0_0_12px_rgba(0,0,0,0.6)]"
+            class="absolute top-1/2 left-1/2 w-48 -translate-x-1/2 -translate-y-1/2 drop-shadow-[0_0_12px_rgba(0,0,0,0.6)]"
             style={`transform: translate(calc(-50% + ${burst.x + 60}px), calc(-50% + ${burst.y}px)) rotate(${burst.rotate}deg) scale(${burst.scale}); filter: saturate(240%) contrast(160%);`}
         />
     {/each}
